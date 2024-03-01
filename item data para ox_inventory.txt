@@ -1,7 +1,0 @@
-['escudo'] = {
-		label = 'Escudo Policial',
-		weight = 8000,
-		client = {
-			event = 'keko-escudo:useitem'
-		},
-	},
