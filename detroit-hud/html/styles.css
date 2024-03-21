@@ -1,0 +1,368 @@
+#statusHud {
+    width: 14%;
+    position: absolute;
+    bottom: 40%;
+    opacity: 60%;
+    /* border: 1px solid red; */
+}
+
+.hidden {
+    display: none;
+}
+
+.bar {
+    width: calc(12.5% - 4px - 1%);
+    min-height: 25.5px;
+    margin-right: 0.6%;
+    margin-left: 0.6%;
+}
+
+.barHealth {
+    width: calc(12.5% - 4px - 1%);
+    min-height: 25.5px;
+    margin-right: 0.6%;
+    margin-left: -2.0%;
+}
+
+.barOxy {
+    width: calc(12.5% - 4px - 1%);
+    min-height: 25.5px;
+    margin-right: 0.6%;
+    margin-left: 0.6%;
+}
+
+.voice {
+    position: absolute;
+    left: 101.5%;
+}
+.voice > div {
+    width: 4px;
+    height: 4px;
+    border: 2px solid #E6E6E5;
+    background: #E6E6E5;
+    border-radius: 50%;
+    /* background-color: rgba(0,0,0,0.4); */
+    margin-bottom: 2px;
+}
+
+.talking > div {
+    border: 2px solid yellow;
+    background: yellow;
+}
+
+.dev {
+    position: absolute;
+    left: 105.7%;
+}
+.dev > div {
+    width: 4px;
+    height: 4px;
+    border: 2px solid #F55713;
+    background: #F55713;
+    border-radius: 50%;
+    /* background-color: rgba(0,0,0,0.4); */
+    margin-bottom: 2px;
+}
+
+.devDebug {
+    position: absolute;
+    left: 109.5%;
+}
+.devDebug > div {
+    width: 4px;
+    height: 4px;
+    border: 2px solid #1B6CE6;
+    background: #1B6CE6;
+    border-radius: 50%;
+    margin-bottom: 2px;
+}
+
+.barIconHealth {
+    position: relative;
+    width: calc(12.5% - 4px - 4px);
+    height: 18.5px;
+    left: 7px;
+    top: 17px;
+
+    position: absolute;
+    z-index: 99;
+}
+
+.barIconArmor {
+    position: relative;
+    width: calc(12.5% - 4px - 4px);
+    height: 18.5px;
+    left: 7.6px;
+    top: 69px;
+    position: absolute;
+    z-index: 99;
+}
+
+.barIconYemek {
+    position: relative;
+    width: calc(12.5% - 4px - 4px);
+    height: 18.5px;
+    left: 7px;
+    top: 121px;
+    position: absolute;
+    z-index: 99;
+}
+
+.barIconSu {
+    position: relative;
+    width: calc(12.5% - 4px - 4px);
+    height: 18.5px;
+    left: 7px;
+    top: 174.5px;
+    position: absolute;
+    z-index: 99;
+}
+
+.barIconOxy {
+    position: relative;
+    width: calc(12.5% - 4px - 4px);
+    height: 18.5px;
+    left: 18px;
+    top: 279px;
+    position: absolute;
+    z-index: 99;
+}
+
+
+
+.corners {
+    width: calc(12.5% - 4px);
+    height: 29px;
+    position: absolute;
+    z-index: 100;
+    margin: -2px;
+    opacity: 0;
+}
+
+.danger {
+    filter: brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(7076%) hue-rotate(358deg) brightness(100%) contrast(122%);
+}
+.dangerGrad {
+    background: rgb(207, 0, 0) !important;
+}
+
+@media (min-width: 2100px) {
+    .stat,
+    .stat .icon {
+        height: 44px;
+    }
+}
+
+@media (min-width: 2200px) {
+    .stat,
+    .stat .icon {
+        height: 46px;
+    }
+    .status {
+        width: 280px;
+    }
+    .stat {
+        width: 251px;
+    }
+    .stat span {
+        font-size: 14px;
+        line-height: 15px;
+        margin-top: 2px;
+    }
+}
+
+@media (min-width: 2300px) {
+    .stat,
+    .stat .icon {
+        height: 48px;
+    }
+}
+
+@media (min-width: 2400px) {
+    .stat,
+    .stat .icon {
+        height: 50px;
+    }
+    .status {
+        width: 300px;
+    }
+    .stat {
+        width: 271px;
+    }
+}
+
+@media (min-width: 2500px) {
+    .stat,
+    .stat .icon {
+        height: 52px;
+    }
+}
+
+@media (max-width: 1800px) {
+    .stat,
+    .stat .icon {
+        height: 38px;
+    }
+}
+
+@media (max-width: 1700px) {
+    .stat,
+    .stat .icon {
+        height: 36px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .stat,
+    .stat .icon {
+        height: 34px;
+    }
+    .status {
+        width: 240px;
+    }
+    .stat {
+        width: 211px;
+    }
+    .stat span {
+        font-size: 12px;
+        line-height: 12px;
+        margin-top: 2px;
+    }
+    .stat .icon img {
+        margin-top: 2px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .stat,
+    .stat .icon {
+        height: 32px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .stat,
+    .stat .icon {
+        height: 30px;
+    }
+    .status {
+        width: 225px;
+    }
+    .stat {
+        width: 196px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .stat,
+    .stat .icon {
+        height: 28px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .stat,
+    .stat .icon {
+        height: 26px;
+    }
+    .status {
+        width: 210px;
+    }
+    .stat {
+        width: 181px;
+        margin-bottom: 4px;
+    }
+    .stat .icon img {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .stat,
+    .stat .icon {
+        height: 24px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .stat,
+    .stat .icon {
+        height: 22px;
+    }
+    .status {
+        width: 195px;
+    }
+    .stat {
+        width: 166px;
+        margin-bottom: 4px;
+    }
+    .stat .icon img {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 900px) {
+    .stat,
+    .stat .icon {
+        height: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .stat,
+    .stat .icon {
+        height: 18px;
+    }
+    .status {
+        width: 180px;
+    }
+    .stat {
+        width: 151px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 700px) {
+    .stat,
+    .stat .icon {
+        height: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .stat,
+    .stat .icon {
+        height: 14px;
+    }
+    .status {
+        width: 165px;
+    }
+    .stat {
+        width: 136px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 500px) {
+    .stat,
+    .stat .icon {
+        height: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .stat,
+    .stat .icon {
+        height: 10px;
+    }
+    .status {
+        width: 150px;
+    }
+    .stat {
+        width: 121px;
+        margin-bottom: 4px;
+    }
+}
+
+
