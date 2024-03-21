@@ -1,0 +1,153 @@
+<html>
+<head>
+        <!-- Made by keko -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+        <script src="./rescale.js" type="text/javascript"></script>
+        <script src="./index.js" type="text/javascript"></script>
+        <style id="applicationStylesheet" type="text/css"></style>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!-- Made by keko -->
+</head>
+<body>
+        <script>
+                $(".tableimg1").click(function () {
+                        var $button = $(this);
+                        var $license = $button.attr('license')
+                        $.post('https://keko_adminmenu/unban', JSON.stringify(
+                                {
+                                        license: $license
+                                }
+                        ));
+                        $.post('https://keko_adminmenu/exit', JSON.stringify({}));
+                });
+
+        </script>
+        <div id="Canvas">
+                <div class="banlist" id="banlist">
+                        <img src="img/return.png" id="returnme" class="return">
+                        <div class="top">BANLIST</div>
+                        <p class="search">Buscar</p>
+                        <input type="text" class="search1" id="bansearch">
+                        <hr>
+                        <div class="banitems">
+                                <div class="datatable-container">
+                                        <table class="datatable">
+                                          <thead>
+                                            <tr>
+                                              <th>ID</th>
+                                              <th>Jugadores</th>
+                                              <th>Motivo</th>
+                                              <th>Realizado por</th>
+                                              <th>Expira en</th>
+                                              <th>Permaban</th>
+                                              <th>Borrar</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody class="banlistqq" id="banlistqq">
+                                                <tr>
+                                                        <td>1</td>
+                                                        <td>keko</td>
+                                                        <td>KEKO</td>
+                                                        <td>Keks</td>
+                                                        <td>21.01.2021 19:42:32</td>
+                                                        <td><img src="img/yes.png" class="tableimg"></td>
+                                                        <td><img src="img/trash.png" class="tableimg1"></td>
+                                                </tr>
+
+                                                <tr>
+                                                        <td>1</td>
+                                                        <td>qq</td>
+                                                        <td>wee RP</td>
+                                                        <td>dd</td>
+                                                        <td>21.01.2021 19:42:32</td>
+                                                        <td><img src="img/no.png"  class="tableimg"></td>
+                                                        <td><img src="img/trash.png" class="tableimg1"></td>
+                                                </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                        </div>
+                </div>
+
+
+
+                <div id="container" class="container">
+                        <div class="top">KEKO ADMIN</div>
+                        <hr>
+                        <img src="img/refresh.png" alt="" class="refresh">
+                        <button class="showbans"><p>BANS</p></button>
+                        <p class="infoaction">INFORMACIÓN Y ACCIONES</p>
+                        <p class="playerinventory">INVENTARIO</p>
+                        <img src="img/players.png" alt="" class="players">
+                        <p class="players" id="onlineplayers">222</p>
+                        <img src="img/admins.png" alt="" class="admins">
+                        <p class="admins" id="onlineadmins">222</p>
+                        <input type="text" class="search" id="search">
+                        <div class="playerbox">
+                                <div id="dialog-window" >
+                                        <div id="scrollable-content">
+                                                <div id="playerlist" id="playerlist">
+                                                        <div class="player">
+                                                                <div class="id">ID: 5555</div>
+                                                                <div class="hr"></div>
+                                                                <div class="playername">Das ist mein langer name</div>
+                                                        </div>
+                                                        <div class="player">
+                                                                <div class="id">ID: 444</div>
+                                                                <div class="hr"></div>
+                                                                <div class="playername">What the fuck</div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="infobox" style="display: block;">
+                                <div class="realnametext">NOMBRE Y APELLIDOS:</div>
+                                <div class="dobtext">FECHA NACIMIENTO:</div>
+                                <div class="heighttext">ALTURA:</div>
+                                <div class="gendertext">SEXO:</div>
+                                <div class="realname" id="realname">NADIE SELECCIONADO</div>
+                                <div class="dob" id="dob">NADIE SELECCIONADO</div>
+                                <div class="height" id="height">NADIE SELECCIONADO</div>
+                                <div class="gender" id="sex">NADIE SELECCIONADO</div>
+                                <hr>
+                                <p class="money">EFECTIVO</p>
+                                <p class="bankmoney">BANCO</p>
+                                <p class="blackmoney">DINERO NEGRO</p>
+                                <div class="playermoney"><p id="meingeld">NADIE SELECCIONADO</p></div>
+                                <div class="playerbankmoney"><p id="meinebank">NADIE SELECCIONADO</p></div>
+                                <div class="playerblackmoney"><p id="meinschwarzgeld">NADIE SELECCIONADO</p></div>
+                                <div class="kick" id="kick"><p>Kickear</p></div>
+                                <div class="spec" id="spec"><p>Spectear</p></div>
+                                <div class="banqq" id="ban"><p>Banear</p></div>
+                                <div class="goto" id="goto"><p>Goto</p></div>
+                                <div class="bring" id="bring"><p>Bring</p></div>
+                                <div class="freeze" id="freeze"><p>Congelar</p></div>
+                                <div class="screenshot" id="screenshot"><p>Discord Screenshot</p></div>
+                                <p class="grund">Motivo kick/ban</p>
+                                <input type="text" class="grund" id="grundaction">
+                                <div class="ban first" id="ban_1"><p>1 Dia</p></div>
+                                <div class="ban two" id="ban_2"><p>2 Dias</p></div>
+                                <div class="ban third" id="ban_3"><p>3 Dias</p></div>
+                                <div class="ban four" id="ban_7"><p>1 Semana</p></div>
+                                <div class="ban five" id="ban_14"><p>2 Semanas</p></div>
+                                <div class="ban six" id="ban_0"><p>Perma</p></div>
+                        </div>
+
+                        <div class="inventorybox">
+                                <div id="dialog-window" >
+                                        <div id="scrollable-content" class="clearinv">
+                                                <!-- <div class="item">
+                                                        <div class="anzahl">255x</div>
+                                                        <div class="hr"></div>
+                                                        <div class="itemname">KOKAIN</div>
+                                                </div> -->
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</body>
+</html>
