@@ -11,18 +11,6 @@ RegisterCommand("admin", function(source, args, rawCommand)
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
 		TriggerClientEvent('chatMessage', xPlayer.source, _U('your_rank', xPlayer.getGroup()))
-		local connect = {
-			{
-				["color"] = "16711936",
-				["title"] = 'El Administrador: '.. '('..GetPlayerName(xPlayer.source).. ')',
-				["description"] = 'Ha ejecutado: \n /admin ',
-				["footer"] = {
-				["text"] = os.date('%H:%M:%S - %d. %m. %Y', os.time()),
-				["icon_url"] = "https://media.discordapp.net/attachments/828262100702855198/828263092525203526/logo.png",
-				},
-			}
-		}
-		PerformHttpRequest(Config.discord2, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
 	end
 end, false)
 
@@ -69,21 +57,6 @@ RegisterCommand("coords", function(source, args, rawCommand)	-- /coords		print e
 	end
 end, false)
 
-RegisterCommand("players", function(source, args, rawCommand)	-- players		show online players | console only
-	isPlayerOnline = false
-	if source == 0 then
-		local xAll = ESX.GetPlayers()
-		print("^2"..#xAll.." ^3online player(s)^0")
-		for i=1, #xAll, 1 do
-			local xPlayer = ESX.GetPlayerFromId(xAll[i])
-			print("^4[ ^2ID : ^3"..xPlayer.source.." ^0| ^2Name : ^3"..xPlayer.getName().." ^0 | ^2Group : ^3"..xPlayer.getGroup().." ^4]^0\n") --GetPlayerName(xPlayer)
-			isPlayerOnline = true
-		end
-		if not isPlayerOnline then
-			print(_U('no_online'))
-		end
-	end
-end, false)
 
 RegisterCommand("report", function(source, args, rawCommand)	-- /report [MESSAGE]		send report message to all online admins
   	local xPlayer = ESX.GetPlayerFromId(source)
@@ -155,7 +128,7 @@ RegisterCommand("say", function(source, args, rawCommand)	-- say [message]		only
 	if source == 0 then
 		if args[1] then
 			local message = string.sub(rawCommand, 4)
-			print("^1Mambo RP Informa ^0: "..message)
+			print("^1La Semilla RP Informa ^0: "..message)
 			TriggerClientEvent('chatMessage',-1 , _U('server_announce', message))
 		else
 			print(_U('invalid_input'))
@@ -264,7 +237,7 @@ RegisterCommand("goto", function(source, args, rawCommand)	-- /goto [ID]
 							},
 						}
 					}
-					PerformHttpRequest(Config.discord, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+					PerformHttpRequest(Config.discord3, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
       			else
         			TriggerClientEvent("chatMessage", xPlayer.source, _U('not_online', 'GOTO'))
       			end
@@ -321,7 +294,7 @@ RegisterCommand("noclip", function(source, args, rawCommand)	-- /goback will tel
 					},
 				}
 			}
-			PerformHttpRequest(Config.discord, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+			PerformHttpRequest(Config.discord2, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
 	  	end
 	end
 end, false)
@@ -348,7 +321,7 @@ RegisterCommand("kill", function(source, args, rawCommand)	-- /kill [ID]
 							},
 						}
 					}
-					PerformHttpRequest(Config.discord, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+					PerformHttpRequest(Config.discord4, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
       			else
         			TriggerClientEvent("chatMessage", xPlayer.source, _U('not_online', 'KILL'))
       			end
@@ -382,7 +355,7 @@ RegisterCommand("freeze", function(source, args, rawCommand)	-- /freeze [ID]
 							},
 						}
 					}
-					PerformHttpRequest(Config.discord2, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+					PerformHttpRequest(Config.discord5, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
       			else
         			TriggerClientEvent("chatMessage", xPlayer.source, _U('not_online', 'FREEZE'))
       			end
@@ -415,7 +388,7 @@ RegisterCommand("unfreeze", function(source, args, rawCommand)	-- /unfreeze [ID]
 							},
 						}
 					}
-					PerformHttpRequest(Config.discord2, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+					PerformHttpRequest(Config.discord5, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
       			else
         			TriggerClientEvent("chatMessage", xPlayer.source, _U('not_online', 'UNFREEZE'))
       			end
@@ -452,7 +425,7 @@ RegisterCommand("reviveall", function(source, args, rawCommand)	-- reviveall (ca
 			},
 		}
 	}
-	PerformHttpRequest(Config.discord, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+	PerformHttpRequest(Config.discord6, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
 end, false)
 
 RegisterCommand("a", function(source, args, rawCommand)	-- /a command for adminchat
@@ -479,7 +452,7 @@ RegisterCommand("a", function(source, args, rawCommand)	-- /a command for adminc
 						},
 					}
 				}
-				PerformHttpRequest(Config.discord2, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
+				PerformHttpRequest(Config.discord7, function(err, text, headers) end, 'POST', json.encode({username = "LOG Administradores", embeds = connect}), { ['Content-Type'] = 'application/json' })
 			else
 				TriggerClientEvent('chatMessage', xPlayer.source, _U('invalid_input', 'AdminChat'))
 			end
