@@ -25,69 +25,89 @@ end)
 
 
 -------- noclip --------------
+
 local noclip = false
+local noclip_speed = 1.5
+function getPosition()
+	local x,y,z = table.unpack(GetEntityCoords(GetPlayerPed(-1),true))
+	return x,y,z
+end
+function getCamDirection()
+	local heading = GetGameplayCamRelativeHeading()+GetEntityHeading(GetPlayerPed(-1))
+	local pitch = GetGameplayCamRelativePitch()
+
+	local x = -math.sin(heading*math.pi/180.0)
+	local y = math.cos(heading*math.pi/180.0)
+	local z = math.sin(pitch*math.pi/180.0)
+
+	local len = math.sqrt(x*x+y*y+z*z)
+	if len ~= 0 then
+		x = x/len
+		y = y/len
+		z = z/len
+	end
+
+	return x,y,z
+end
+function isNoclip()
+	return noclip
+end
+
 RegisterNetEvent("keko-report:noclip")
 AddEventHandler("keko-report:noclip", function(input)
     local player = PlayerId()
 	local ped = PlayerPedId
-	
-    local msg = "disabled"
+	local msg = "desactivado"
 	if(noclip == false)then
-		noclip_pos = GetEntityCoords(PlayerPedId(), false)
 	end
-
 	noclip = not noclip
-
 	if(noclip)then
-		msg = "enabled"
+		msg = "activado"
 	end
+	TriggerEvent("chatMessage", "Noclip ^2^*" .. msg)
+		SetEntityVisible(GetPlayerPed(-1), true, 0)
 
-	TriggerEvent("chatMessage", "Noclip has been ^2^*" .. msg)
 	end)
-	
 	local heading = 0
 	Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(0)
+		if noclip then
+			local ped = GetPlayerPed(-1)
+			local x,y,z = getPosition()
+			local dx,dy,dz = getCamDirection()
+			local speed = noclip_speed
 
-		if(noclip)then
-			SetEntityCoordsNoOffset(PlayerPedId(), noclip_pos.x, noclip_pos.y, noclip_pos.z, 0, 0, 0)
-
-			if(IsControlPressed(1, 34))then
-				heading = heading + 1.5
-				if(heading > 360)then
-					heading = 0
-				end
-
-				SetEntityHeading(PlayerPedId(), heading)
-			end
-
-			if(IsControlPressed(1, 9))then
-				heading = heading - 1.5
-				if(heading < 0)then
-					heading = 360
-				end
-
-				SetEntityHeading(PlayerPedId(), heading)
-			end
-
-			if(IsControlPressed(1, 8))then
-				noclip_pos = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 1.0, 0.0)
-			end
-
-			if(IsControlPressed(1, 32))then
-				noclip_pos = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, -1.0, 0.0)
-			end
-
-			if(IsControlPressed(1, 27))then
-				noclip_pos = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.0, 1.0)
-			end
-
-			if(IsControlPressed(1, 173))then
-				noclip_pos = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.0, -1.0)
-			end
+			SetEntityVisible(GetPlayerPed(-1), false, 0)
+			SetEntityVelocity(ped, 0.0001, 0.0001, 0.0001)
+		if IsControlPressed(0,32) then -- MOVE adelante
+			x = x+speed*dx
+			y = y+speed*dy
+			z = z+speed*dz
+		end
+		if IsControlPressed(0,269) then -- MOVE atras
+			x = x-speed*dx
+			y = y-speed*dy
+			z = z-speed*dz
+		end
+		if IsControlPressed(0,34) then -- MOVE IZQ
+			x = x-1
+		end
+		if IsControlPressed(0,9) then -- MOVE DERCH
+			x = x+1
+		end
+		if IsControlPressed(0,203) then -- MOVE arriba
+			z = z+1
+		end
+		if IsControlPressed(0,210) then -- MOVE arriba
+			z = z-1
+		end
+		if IsControlPressed(0,21) then
+			noclip_speed = 3.0
 		else
-			Citizen.Wait(200)
+			noclip_speed = 1.5
+		end
+		SetEntityCoordsNoOffset(ped,x,y,z,true,true,true)
 		end
 	end
 end)
